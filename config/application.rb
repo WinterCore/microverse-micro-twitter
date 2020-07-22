@@ -11,6 +11,8 @@ module MicroTwitter
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.hosts << 'rails.test'
+    config.hosts << "rails-micro-twitter.herokuapp.com"
+  
     Kaminari.configure do |config|
       config.default_per_page = 10
     end
