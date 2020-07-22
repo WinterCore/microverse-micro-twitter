@@ -10,8 +10,8 @@ class TweetsController < ApplicationController
   def index
     @tweets = FindTweets.new(Tweet).call(params).order('created_at DESC')
     @trends = latest_trends
-    @tweet  = Tweet.new
-    @users  = User.limit(10)
+    @tweet = Tweet.new
+    @users = User.limit(10)
   end
 
   # GET /tweets/new
