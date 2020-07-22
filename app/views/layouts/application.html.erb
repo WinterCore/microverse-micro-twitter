@@ -32,10 +32,18 @@
     </div>
     <div id="navbarExample" class="navbar-menu">
       <div class="navbar-end">
-        <div class="field is-grouped">
-          <p class="control">
-            <%= link_to 'New Tweet', new_tweet_path, class: 'button is-info is-inverted' %>
-          </p>
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <% unless user_signed_in? %>
+                <%= link_to 'New Tweet', new_tweet_path, class: 'button is-info is-inverted' %>
+                <%= link_to 'Sign up', new_user_registration_path, class: 'button is-info' %>
+                <%= link_to 'Sign in', new_user_session_path, class: 'button is-info' %>
+              <% else %>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'button is-info' %>
+              <% end %>
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -10,18 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_175334) do
+ActiveRecord::Schema.define(version: 2020_07_22_191942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tweets", force: :cascade do |t|
-    t.text "body", null: false
+  create_table "trends", force: :cascade do |t|
+    t.string "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "trends_tweets", id: false, force: :cascade do |t|
+    t.bigint "trend_id", null: false
+    t.bigint "tweet_id", null: false
+    t.index ["trend_id", "tweet_id"], name: "index_trends_tweets_on_trend_id_and_tweet_id"
+    t.index ["tweet_id", "trend_id"], name: "index_trends_tweets_on_tweet_id_and_trend_id"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tweets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "username", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -31,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_07_22_175334) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "tweets", "users"
 end
