@@ -1,0 +1,6 @@
+<nav class="panel">
+  <p class="panel-heading">Trends</p>
+  <% @trends.each do | trend | %>
+    <%= link_to "#{trend.tag} (#{trend.count})", tweets_path(trends: trend.id), class: 'panel-block' %>
+  <% end %>
+</nav>

@@ -1,0 +1,19 @@
+
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <%=
+    link_to(
+      'Previous',
+      link_hash.merge(page: resource.current_page - 1),
+      class: 'pagination-next',
+      disabled: resource.current_page <= 1 ? true : nil
+    )
+  %>
+  <%=
+    link_to(
+      'Next',
+      link_hash.merge(page: resource.current_page + 1),
+      class: 'pagination-next',
+      disabled: resource.current_page >= resource.total_pages ? true : nil
+    )
+  %>
+</nav>
