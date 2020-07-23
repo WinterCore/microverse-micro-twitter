@@ -1,6 +1,6 @@
 # Lightweight Twitter clone
 
-![Push Container to Heroku](https://github.com/WinterCore/microverse-micro-twitter/workflows/Deploy%20to%20Heroku/badge.svg?branch=development)
+![Deploy to Heroku](https://github.com/WinterCore/microverse-micro-twitter/workflows/Deploy%20to%20Heroku/badge.svg)
 
 <br />
 <p align="center">
