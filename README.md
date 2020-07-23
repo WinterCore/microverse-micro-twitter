@@ -66,7 +66,7 @@ To have this app on your pc, you need to:
 
 ## Authors
 
-👤 **Hasan Kharouf**
+👤 **WinterCore**
 
 - Github: [@wintercore](https://github.com/wintercore)
 
